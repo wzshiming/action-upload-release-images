@@ -1,0 +1,9 @@
+name: "Upload Release Images"
+description: "Create a release multi-platform images"
+author: "wzshiming"
+
+runs:
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/upload-release-images.sh
+      shell: bash
