@@ -20,7 +20,7 @@ COPY ${RELEASE}/${FILE} /usr/local/bin/${name}
 ENTRYPOINT ["/usr/local/bin/${name}"]
 EOF
 
-  image="ghcr.io/${REPO}/${name}:${TAG}"
+  image="ghcr.io/${REPO,,}/${name}:${TAG}"
   imagearch="${image}__linux_${arch}"
   docker build -t "${imagearch}" -f "${dockerfile}" . && docker push "${imagearch}"
   manifests["${image}"]+="${imagearch} "
