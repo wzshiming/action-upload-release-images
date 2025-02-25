@@ -27,8 +27,8 @@ EOF
 done
 
 for name in ${!manifests[@]}; do
-  docker manifest create --amend "${name}" ${manifests[*]}
-  for imagearch in ${manifests[*]}; do
+  docker manifest create --amend "${name}" ${manifests["${name}"]}
+  for imagearch in ${manifests["${name}"]}; do
     arch="${imagearch##*_}"
     docker manifest annotate "${name}" "${imagearch}" --arch "${arch}" --os linux
   done
