@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -e
 
+# Keep per-arch tags single-platform so docker manifest create accepts them.
+export BUILDX_NO_DEFAULT_ATTESTATIONS=1
+
 if [[ -z "${RELEASE}" ]]; then
   RELEASE="release"
 fi
